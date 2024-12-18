@@ -8,8 +8,9 @@ import Header from './components/Layout/Header';
 import EventForm from './components/EventForm/EventForm';
 import Calendar from './components/Calendar/Calendar';
 import AuthForm from './components/Auth/AuthForm';
+import EventCreationForm from './components/EventCreation/EventCreationForm';
 
-const MainLayout = () => (
+const DashboardLayout = () => (
     <>
         <Header />
         <Container maxWidth="lg" sx={{ mt: 4 }}>
@@ -25,6 +26,15 @@ const MainLayout = () => (
     </>
 );
 
+const EventCreationLayout = () => (
+    <>
+        <Header />
+        <Container maxWidth="lg" sx={{ mt: 4 }}>
+            <EventCreationForm />
+        </Container>
+    </>
+);
+
 function App() {
     return (
         <ThemeProvider theme={theme}>
@@ -32,8 +42,10 @@ function App() {
             <Router>
                 <Routes>
                     <Route path="/login" element={<AuthForm />} />
-                    <Route path="/" element={<MainLayout />} />
-                    <Route path="*" element={<Navigate to="/" replace />} />
+                    <Route path="/create-event" element={<EventCreationLayout />} />
+                    <Route path="/dashboard" element={<DashboardLayout />} />
+                    <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                    <Route path="*" element={<Navigate to="/dashboard" replace />} />
                 </Routes>
             </Router>
         </ThemeProvider>

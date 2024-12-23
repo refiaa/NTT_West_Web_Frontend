@@ -7,8 +7,10 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.2.1",
     "@mui/material": "^6.2.1",
+    "axios": "^1.7.9",
     "cra-template": "1.2.0",
     "date-fns": "^4.1.0",
+    "dayjs": "^1.11.13",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^7.0.2",
@@ -25,14 +27,25 @@
     "check": "biome check --apply ."
   },
   "eslintConfig": {
-    "extends": ["react-app", "react-app/jest"]
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
-    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@biomejs/biome": "^1.9.4"
   }
 }

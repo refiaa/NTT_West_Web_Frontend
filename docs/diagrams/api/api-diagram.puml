@@ -1,0 +1,30 @@
+@startuml
+    participant Client
+    participant AuthAPI
+    participant EventAPI
+    participant DB
+
+    Client->>AuthAPI: POST /api/auth/register
+    Note right of AuthAPI: {email, password, username}
+    AuthAPI->>DB: Create User
+    DB-->>AuthAPI: User Created
+    AuthAPI-->>Client: 201 Created
+
+    Client->>AuthAPI: POST /api/auth/login
+    Note right of AuthAPI: {email, password}
+    AuthAPI->>DB: Verify Credentials
+    DB-->>AuthAPI: User Found
+    AuthAPI-->>Client: 200 OK + JWT Token
+
+    Client->>EventAPI: POST /api/events
+    Note right of EventAPI: {name, date, description}
+    EventAPI->>DB: Create Event
+    DB-->>EventAPI: Event Created
+    EventAPI-->>Client: 201 Created
+
+    Client->>EventAPI: POST /api/events/{eventId}/participants
+    Note right of EventAPI: {participants[], timeSlots[]}
+    EventAPI->>DB: Save Participants
+    DB-->>EventAPI: Participants Saved
+    EventAPI-->>Client: 201 Created
+@enduml

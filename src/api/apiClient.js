@@ -18,12 +18,13 @@ class ApiClient {
         this.client.interceptors.request.use(
             (config) => {
                 const token = localStorage.getItem('accessToken');
+                console.log('Current Token:', token);
                 if (token) {
                     config.headers.Authorization = `Bearer ${token}`;
                 }
+                console.log('Request Headers:', config.headers);
                 return config;
             },
-            (error) => Promise.reject(error)
         );
 
         this.client.interceptors.response.use(

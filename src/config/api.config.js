@@ -1,7 +1,7 @@
 export const API_CONFIG = {
     BASE_URL: 'https://kn739p2hm7.execute-api.ap-northeast-1.amazonaws.com/team3',
     TIMEOUT: 30000,
-    RETRY_COUNT: 3,
+    RETRY_COUNT: 10,
     RETRY_DELAY: 1000,
 };
 

@@ -41,11 +41,6 @@ const AuthForm = () => {
         username: '',
     });
 
-    const [passwordMatch, setPasswordMatch] = useState({
-        isMatching: true,
-        isDirty: false
-    });
-
     useEffect(() => {
         const token = localStorage.getItem('accessToken');
         if (token) {
@@ -94,19 +89,9 @@ const AuthForm = () => {
                 break;
             case 'password':
                 error = validatePassword(value);
-                if (!error && formData.confirmPassword) {
-                    setPasswordMatch({
-                        isMatching: value === formData.confirmPassword,
-                        isDirty: true
-                    });
-                }
                 break;
             case 'confirmPassword':
                 error = validateConfirmPassword(value, formData.password);
-                setPasswordMatch({
-                    isMatching: value === formData.password,
-                    isDirty: true
-                });
                 break;
             case 'username':
                 error = validateUsername(value);
@@ -119,7 +104,7 @@ const AuthForm = () => {
             ...prev,
             [name]: error
         }));
-    }, [formData.confirmPassword, formData.password, validateEmail, validatePassword, validateConfirmPassword, validateUsername]);
+    }, [formData.password, validateEmail, validatePassword, validateConfirmPassword, validateUsername]);
 
     const validateForm = useCallback(() => {
         const errors = {
@@ -181,7 +166,6 @@ const AuthForm = () => {
             username: '',
         });
         setValidationError('');
-        setPasswordMatch({ isMatching: true, isDirty: false });
     }, []);
 
     return (
